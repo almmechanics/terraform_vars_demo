@@ -32,19 +32,12 @@ steps:
     backendAzureRmKey: ${{parameters.statefileContext}}_${{parameters.environment}}_terraform.state
 
 - task: AzureCLI@2
-  displayName: 'terraform plan'
+  displayName: 'terraform plan and apply'
   inputs:
     azureSubscription: ${{parameters.backendServiceArm}}
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
-    inlineScript: 'terraform plan -var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan'  
-    workingDirectory:  ${{parameters.workingDirectory}}
-
-- task: AzureCLI@2
-  displayName: 'terraform apply'
-  inputs:
-    azureSubscription: ${{parameters.backendServiceArm}}
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'terraform apply ${{parameters.environment}}.tfplan'
+    inlineScript: |
+      terraform plan -var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan
+      terraform apply ${{parameters.environment}}.tfplan
     workingDirectory:  ${{parameters.workingDirectory}}
