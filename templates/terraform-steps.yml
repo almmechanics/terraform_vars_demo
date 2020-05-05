@@ -38,6 +38,6 @@ steps:
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      terraform plan -var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan
+      terraform plan -var-file="../${{parameters.environment}}/config.tfvars" -out="${{parameters.environment}}.tfplan"
       terraform apply ${{parameters.environment}}.tfplan
     workingDirectory:  ${{parameters.workingDirectory}}
