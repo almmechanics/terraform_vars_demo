@@ -1,4 +1,4 @@
 **/*
 !*.tf
 !**/*.tfvars
-!templates/*.yml
+!templates/*.ps1
