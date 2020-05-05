@@ -1,3 +1,3 @@
 data "external" "pwsh" {
-  program = ["pwsh", "${path.module}/Invoke-az.ps1"] # azurerm_databricks_workspace.example.location, azurerm_databricks_workspace.example.id]
+  program = ["pwsh", "${path.module}/Invoke-az.ps1", data.azurerm_client_config.current.id, data.azurerm_client_config.current.tenant_id]
 }

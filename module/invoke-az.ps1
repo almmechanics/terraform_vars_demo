@@ -1,10 +1,16 @@
 [CmdletBinding()] 
-param()
+param(
+    [string]
+    $subscription,
+    [string]
+    $tenant
+)
 
 Set-StrictMode -Version Latest
 
 # gci env: | ForEach-Object {write-verbose ('{0}={1}' -f $_.Name,$_.Value)}
-$azReply = (az version) | ConvertFrom-Json -AsHashtable
 
+$azAccount = (az account show)| ConvertFrom-Json -AsHashtable
+$loggedIn = (($azAccount.id -eq $subscription) -and ($azAccount.tenantId -eq $tenant))
 
- return @{'az' = $azReply['azure-cli']} | ConvertTo-Json
+ return @{'az' = "$loggedIn"} | ConvertTo-Json
