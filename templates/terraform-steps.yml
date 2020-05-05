@@ -35,7 +35,7 @@ steps:
   displayName: 'terraform plan'
   inputs:
     azureSubscription: ${{parameters.backendServiceArm}}
-    scriptType: 'ps'
+    scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: 'terraform'
     arguments: 'plan -var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan'
@@ -45,7 +45,7 @@ steps:
   displayName: 'terraform apply'
   inputs:
     azureSubscription: ${{parameters.backendServiceArm}}
-    scriptType: 'ps'
+    scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: 'terraform'
     arguments: 'apply ${{parameters.environment}}.tfplan'
