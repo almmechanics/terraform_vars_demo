@@ -39,7 +39,7 @@ steps:
     provider: 'azurerm'
     environmentServiceNameAzureRM: ${{parameters.backendServiceArm}}
     command: 'plan'
-    commandOptions: '-var-file=${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan'
+    commandOptions: '-var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan'
     workingDirectory:  ${{parameters.workingDirectory}}
 
 - task: TerraformTaskV1@0
