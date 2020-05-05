@@ -13,7 +13,8 @@ parameters:
   type: string
 - name: 'statefileContext' # $(Tf.Statefile)
   type: string
-
+- name: 'client_secret' # $(Tf.Pat)
+  type: string
 
 
 steps:
@@ -39,7 +40,7 @@ steps:
     provider: 'azurerm'
     environmentServiceNameAzureRM: ${{parameters.backendServiceArm}}
     command: 'plan'
-    commandOptions: '-var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan'
+    commandOptions: '-var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan -var client_secret=${{parameters.client_secret}}'
     workingDirectory:  ${{parameters.workingDirectory}}
 
 - task: TerraformTaskV1@0

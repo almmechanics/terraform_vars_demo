@@ -1,9 +1,13 @@
 [CmdletBinding()] 
 param(    
     [string]
-    $subscription,
+    $Subscription,
     [string]
-    $tenant
+    $Tenant,
+    [string]
+    $ClientId,
+    [string]
+    $ClientSecret
 )
 
 # # Set-StrictMode -Version Latest
@@ -15,10 +19,13 @@ param(
 $azAccount = (az account show)| ConvertFrom-Json -AsHashtable
 if ($azAccount)
 {
-    $loggedIn = (($azAccount.id -eq $subscription) -and ($azAccount.tenantId -eq $tenant))
+    $Response = (($azAccount.id -eq $Subscription) -and ($azAccount.tenantId -eq $Tenant))
 }
 else
 {
-    $loggedIn = "Null"
+    az login --service-principal -u $ClientId -p $ClientSecret --tenant $Tenant
+
+    $Response= ((az account get-access-token)| ConvertFrom-Json).accessToken
+    
 }
- return @{'az' = "$loggedIn"} | ConvertTo-Json
+ return @{'az' = "$Response"} | ConvertTo-Json

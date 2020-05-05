@@ -45,3 +45,4 @@ stages:
               backendAzureRmContainerName: $(Tf.Container)
               environment: 'dev'
               statefileContext: $(StatefileContext)
+              client_secret: $(Tf.ClientSecret)
