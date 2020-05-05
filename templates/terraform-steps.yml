@@ -39,6 +39,7 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: 'terraform'
     arguments: 'plan -var-file=../${{parameters.environment}}/config.tfvars -out=${{parameters.environment}}.tfplan'
+    workingDirectory:  ${{parameters.workingDirectory}}
 
 - task: AzureCLI@2
   displayName: 'terraform apply'
@@ -48,3 +49,4 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: 'terraform'
     arguments: 'apply ${{parameters.environment}}.tfplan'
+    workingDirectory:  ${{parameters.workingDirectory}}
