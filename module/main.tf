@@ -8,8 +8,7 @@ provider "azurerm" {
   }
 }
 
-data "azurerm_client_config" "current" {
-}
+data "azurerm_client_config" "current" {}
 
 resource "random_string" "demo" {
   length  = var.string_length

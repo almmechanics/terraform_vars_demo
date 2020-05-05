@@ -19,7 +19,8 @@ param(
 $azAccount = (az account show)| ConvertFrom-Json -AsHashtable
 if ($azAccount)
 {
-    $Response = (($azAccount.id -eq $Subscription) -and ($azAccount.tenantId -eq $Tenant))
+    #    $Response = (($azAccount.id -eq $Subscription) -and ($azAccount.tenantId -eq $Tenant))
+    $Response= ((az account get-access-token)| ConvertFrom-Json).accessToken
 }
 else
 {
