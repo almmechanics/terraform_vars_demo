@@ -2,6 +2,10 @@ output "my_string" {
   value = random_string.demo.result
 }
 
-output "pwsh" {
-  value = data.external.pwsh.result
+output "bearer1" {
+  value = data.external.databricks.result
+}
+
+output "bearer2" {
+  value = data.external.azureapi.result
 }
