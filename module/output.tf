@@ -1,5 +1,5 @@
 output "my_string" {
-  value = random_string.demo.result
+  value = random_string.module.result
 }
 
 output "bearer1" {

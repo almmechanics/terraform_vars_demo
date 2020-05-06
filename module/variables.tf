@@ -7,3 +7,13 @@ variable "client_secret" {
   description = "client secret"
   type        = string
 }
+
+variable "location" {
+  description = "Azure region to be deployed into."
+  type        = string
+}
+
+variable "instance" {
+  description = "target instance."
+  type        = string
+}

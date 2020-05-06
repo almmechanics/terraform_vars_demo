@@ -10,6 +10,17 @@ provider "azurerm" {
 
 data "azurerm_client_config" "current" {}
 
-resource "random_string" "demo" {
+resource "random_string" "module" {
   length  = var.string_length
+  override_special = "-_"
+  keepers = {
+    # Generate a new integer each time we switch to a new listener ARN
+    instance = var.instance
+  }
+}
+
+
+resource "azurerm_resource_group" "module" {
+  name     = format("rg_datbricks_%s", random_string.module.result)
+  location = var.location
 }
