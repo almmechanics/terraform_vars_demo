@@ -25,4 +25,4 @@ resource "azurerm_key_vault_secret" "azureapi" {
   depends_on = [
     data.external.azureapi
   ]  
-}
+} 

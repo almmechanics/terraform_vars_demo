@@ -6,6 +6,7 @@ trigger:
 variables:
   StatefileContext: $(System.TeamProject)_$(Build.DefinitionName)_$(Build.Repository.Name)_$(Build.SourceBranchName)
   Subscription: AzureSP2
+  TF_INPUT: 0
 
 stages:
 - stage: CI
@@ -13,6 +14,8 @@ stages:
   jobs:
   - job: Build
     displayName: 'Create build artifact'
+    workspace:
+      clean: all
     pool: 'private'
     steps:
     - publish: $(System.DefaultWorkingDirectory)
