@@ -30,4 +30,4 @@ param(
     
     $bearer = ($Response| ConvertFrom-Json).accessToken
 
-return @{'bearer' = "$bearer"} | ConvertTo-Json
+return @{'accessToken' = "$bearer"} | ConvertTo-Json

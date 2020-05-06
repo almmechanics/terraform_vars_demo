@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "module" {
-  name                = format("kv%03s%03d", random_string.module.result, var.instance)
+  name                = format("kvb%03s%03d", random_string.module.result, var.instance)
   location            = azurerm_resource_group.module.location
   resource_group_name = azurerm_resource_group.module.name
   tenant_id           = data.azurerm_client_config.current.tenant_id
