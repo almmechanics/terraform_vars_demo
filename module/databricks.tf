@@ -8,7 +8,9 @@ resource "azurerm_databricks_workspace" "module" {
 data "external" "init_bearer" {
   program = ["pwsh", "${path.module}/Initialize-BearerToken.ps1", azurerm_databricks_workspace.module.location, azurerm_databricks_workspace.module.id, data.external.databricks.result.accessToken, data.external.azureapi.result.accessToken]
   depends_on = [
-    azurerm_databricks_workspace.module
+    azurerm_databricks_workspace.module,
+        data.external.databricks, 
+    data.external.azureapi,
   ]
 }
 
@@ -23,8 +25,6 @@ data "http" "databricks_bearer_token" {
   }
 
   depends_on = [
-    data.external.databricks, 
-    data.external.azureapi, 
     data.external.init_bearer
   ]  
 }
@@ -40,6 +40,7 @@ resource "azurerm_key_vault_secret" "bearerToken" {
   key_vault_id = azurerm_key_vault.module.id
 
   depends_on = [
-    data.http.databricks_bearer_token
+    data.http.databricks_bearer_token,
+    azurerm_key_vault.module
   ]  
 }
