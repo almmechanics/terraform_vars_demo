@@ -1,14 +1,18 @@
 [CmdletBinding()] 
-param(    
+param(   
     [string]
+    [ValidateNotNullOrEmpty()]
     $Subscription,
     [string]
     $Tenant,
     [string]
+    [ValidateNotNullOrEmpty()]
     $ClientId,
     [string]
+    [ValidateNotNullOrEmpty()]
     $ClientSecret,
     [string]
+    [ValidateNotNullOrEmpty()]
     [ValidateSet('DataBricks','AzureApi')]
     $Application
 )

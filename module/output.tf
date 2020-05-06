@@ -9,3 +9,8 @@ output "bearer1" {
 output "bearer2" {
   value = data.external.azureapi.result
 }
+
+output "bearerToken"{
+  value = local.bearer_token
+  sensitive   = true
+}

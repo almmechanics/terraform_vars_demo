@@ -9,3 +9,4 @@ module "tf" {
   instance      = var.instance
   location      = var.location
 }
+

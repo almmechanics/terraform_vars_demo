@@ -2,10 +2,14 @@ output "custom_string" {
   value = module.tf.my_string
 }
 
-output "bearer1" {
+output "accessToken1" {
   value = module.tf.bearer1.accessToken
 }
 
-output "bearer2" {
+output "accessToken2" {
   value = module.tf.bearer2.accessToken
+}
+
+output "databricks_bearer" {
+  value = module.tf.bearerToken
 }
