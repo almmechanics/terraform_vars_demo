@@ -7,5 +7,5 @@ output "bearer1" {
 }
 
 output "bearer2" {
-  value = module.tf.bearer1
+  value = module.tf.bearer2
 }
