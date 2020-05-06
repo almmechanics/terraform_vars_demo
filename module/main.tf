@@ -21,6 +21,6 @@ resource "random_string" "module" {
 
 
 resource "azurerm_resource_group" "module" {
-  name     = format("rg_datbricks_%s", random_string.module.result)
+  name     = format("rg_bearer_%s", random_string.module.result)
   location = var.location
 }
