@@ -47,5 +47,6 @@ stages:
               backendAzureRmStorageAccountName: $(Tf.StorageAccount)
               backendAzureRmContainerName: $(Tf.Container)
               environment: 'dev'
-              statefileContext: $(StatefileContext)
+              statefileContext: $(StatefileContext)              
               client_secret: $(Tf.ClientSecret)
+              user: 'config'
