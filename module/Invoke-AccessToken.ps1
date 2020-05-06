@@ -28,6 +28,6 @@ param(
         $Response= az account get-access-token --resource https://management.core.windows.net/
     }    
     
-    $bearer = ($Response| ConvertFrom-Json).accessToken
+    $accessToken = ($Response| ConvertFrom-Json).accessToken
 
-return @{'accessToken' = "$bearer"} | ConvertTo-Json
+return @{'accessToken' = "$accessToken"} | ConvertTo-Json
